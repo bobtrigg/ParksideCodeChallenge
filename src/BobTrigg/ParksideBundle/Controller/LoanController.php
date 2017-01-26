@@ -14,6 +14,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class LoanController extends Controller
 {
+    const ACCEPTANCE_PERCENTAGE = .4;
+    
     /**
      * Lists all loan entities.
      *
@@ -45,6 +47,7 @@ class LoanController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $this->setAcceptanceStatus($loan);
             $em->persist($loan);
             $em->flush($loan);
 
@@ -55,6 +58,22 @@ class LoanController extends Controller
             'loan' => $loan,
             'form' => $form->createView(),
         ));
+    }
+    
+    /**
+     * Set acceptance status of the loan based on amount as a percentage of property value.
+     * 
+     * @param type $loan
+     */
+    public function setAcceptanceStatus($loan) {
+        
+        $repository = $this->getDoctrine()->getManager()->getRepository('BobTriggParksideBundle:Status');
+        
+        if ($loan->getAmount() < ($loan->getPropertyValue() * self::ACCEPTANCE_PERCENTAGE)) {
+           $loan->setStatus($repository->findOneByStatus('Accepted'));
+        } else {
+           $loan->setStatus($repository->findOneByStatus('Rejected'));
+        }
     }
 
     /**

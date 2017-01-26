@@ -69,6 +69,17 @@ class Loan
     {
         return $this->id;
     }
+    
+    public function setAcceptanceStatus() {
+        
+        $repository = $this->getDoctrine()->getManager()->getRepository('BobTriggParksideBundle:Status');
+        
+        if ($this->amount < ($this->propertyValue * .4)) {
+           $this->status = $repository->findOneByStatus('Accepted');
+        } else {
+           $this->status = $repository->findOneByStatus('Rejected');
+        }
+    }
 
     /**
      * Set amount
