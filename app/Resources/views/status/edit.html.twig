@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edit status name{% endblock %}
+
+{% block body %}
+    <h1>Status name edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input class="btn btn-default btn-xs" type="submit" value="Save" />
+    {{ form_end(edit_form) }}
+
+    <a class="btn btn-default btn-xs" href="{{ path('status_index') }}">Back to the list</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn btn-default btn-xs" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+
+{% endblock %}

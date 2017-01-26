@@ -1,0 +1,8 @@
+bob_trigg_parkside:
+    resource: "@BobTriggParksideBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

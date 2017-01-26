@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}View status name{% endblock %}
+
+{% block body %}
+    <h1>Status name</h1>
+
+    <table class="records_list table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ status.id }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ status.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-default btn-xs" href="{{ path('status_index') }}">Back to the list</a>
+    <a class="btn btn-default btn-xs" href="{{ path('status_edit', { 'id': status.id }) }}">Edit</a>
+
+     {{ form_start(delete_form) }}
+         <input class="btn btn-default btn-xs" type="submit" value="Delete">
+     {{ form_end(delete_form) }}
+
+{% endblock %}

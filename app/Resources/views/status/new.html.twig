@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Add a loan status{% endblock %}
+
+{% block body %}
+    <h1>Add a status</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-default btn-xs" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+
+    <a class="btn btn-default btn-xs" href="{{ path('status_index') }}">Back to the list</a>
+
+{% endblock %}

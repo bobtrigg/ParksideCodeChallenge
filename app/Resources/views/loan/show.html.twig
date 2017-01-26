@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}View your loan status{% endblock %}
+
+{% block body %}
+    <h1>Loan status</h1>
+
+    <table class="records_list table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ loan.id }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ loan.amount }}</td>
+            </tr>
+            <tr>
+                <th>Property value</th>
+                <td>{{ loan.propertyValue }}</td>
+            </tr>
+            <tr>
+                <th>SSN</th>
+                <td>{{ loan.sSN }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ loan.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <a class="btn btn-default btn-xs" href="{{ path('loan_index') }}">Back to the list</a>
+        <a class="btn btn-default btn-xs"  href="{{ path('loan_edit', { 'id': loan.id }) }}">Edit</a>
+    </p>
+        
+    {{ form_start(delete_form) }}
+        <input class="btn btn-default btn-xs" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+            
+{% endblock %}

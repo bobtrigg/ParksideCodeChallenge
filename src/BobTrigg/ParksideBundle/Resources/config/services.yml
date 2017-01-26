@@ -1,0 +1,4 @@
+services:
+#    bob_trigg_parkside.example:
+#        class: BobTrigg\ParksideBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

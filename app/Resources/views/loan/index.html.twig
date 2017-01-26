@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}List of loans{% endblock %}
+
+{% block body %}
+    <h1>List of loans</h1>
+
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Loan amount</th>
+                <th>Property value</th>
+                <th>SSN</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for loan in loans %}
+            <tr>
+                <td><a href="{{ path('loan_show', { 'id': loan.id }) }}">{{ loan.id }}</a></td>
+                <td>{{ loan.amount }}</td>
+                <td>{{ loan.propertyValue }}</td>
+                <td>{{ loan.sSN }}</td>
+                <td>
+                    <a class="btn btn-default btn-xs" href="{{ path('loan_show', { 'id': loan.id }) }}">show</a>
+                    <a class="btn btn-default btn-xs" href="{{ path('loan_edit', { 'id': loan.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-default" href="{{ path('loan_new') }}">
+        Create a new loan
+    </a>
+{% endblock %}
