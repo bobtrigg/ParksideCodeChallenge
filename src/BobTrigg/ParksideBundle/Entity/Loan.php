@@ -57,6 +57,14 @@ class Loan
      * @var string
      *
      * @ORM\Column(name="SSN", type="string", length=11)
+     * @Assert\Length(
+     *   min = 9,
+     *   minMessage = "Social Security Number must be exactly 9 digits."
+     * )
+     * @Assert\Length(
+     *   max = 9,
+     *   maxMessage = "Social Security Number must be exactly 9 digits."
+     * )
      */
     private $sSN;
 
