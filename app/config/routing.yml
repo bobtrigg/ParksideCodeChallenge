@@ -6,3 +6,7 @@ bob_trigg_parkside:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+loan:
+    path:   /loan
+    defaults: { _controller: BobTriggParksideBundle:Loan:index }
